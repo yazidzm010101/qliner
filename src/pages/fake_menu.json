@@ -1,0 +1,188 @@
+[
+    {
+        "id": 1,
+        "name": "Luffy's Rendang Bowl",
+        "category": "Food",
+        "price": 50000,
+        "tags": "Padang",
+        "badge": "Luffy",
+        "image": "",
+        "description": "",
+        "badge_image": "https://encrypted-tbn0.gstatic.com/image?q=tbn:ANd9GcTGcFc3UuemUertoofUZcCKLIssK7YBjcDryA&usqp=CAU"
+    },
+    {
+        "id": 2,
+        "name": "Rendang Rice Bowl",
+        "category": "Food",
+        "price": 30000,
+        "tags": "Padang",
+        "badge": "",
+        "image": "",
+        "description": ""
+    },
+    {
+        "id": 5,
+        "name": "Mie Nyemek",
+        "category": "Food",
+        "price": 30000,
+        "tags": "Javanese",
+        "badge": "",
+        "image": "",
+        "description": ""
+    },
+    {
+        "id": 6,
+        "name": "Katsudon",
+        "category": "Food",
+        "price": 50000,
+        "tags": "Japanese",
+        "badge": "",
+        "image": "",
+        "description": ""
+    },
+    {
+        "id": 7,
+        "name": "Bijuu Mōdo Udon",
+        "category": "Food",
+        "price": 60000,
+        "tags": "Japanese",
+        "badge": "Naruto",
+        "image": "",
+        "description": "",
+        "badge_image": "https://i.pinimg.com/1200x/c1/32/54/c1325499518ff987ce850500c2bed7db.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Cocholate Toast",
+        "category": "Dessert",
+        "price": 50000,
+        "tags": "Toast Series",
+        "badge": "",
+        "image": "",
+        "description": ""
+    },
+    {
+        "id": 9,
+        "name": "Nutella Cocholate Toast",
+        "category": "Dessert",
+        "price": 30000,
+        "tags": "Toast Series",
+        "badge": "",
+        "image": "",
+        "description": ""
+    },
+    {
+        "id": 10,
+        "name": "Moza Toast",
+        "category": "Dessert",
+        "price": 15000,
+        "tags": "Toast Series",
+        "badge": "",
+        "image": "",
+        "description": ""
+    },
+    {
+        "id": 11,
+        "name": "Santōryu Toast",
+        "category": "Dessert",
+        "price": 40000,
+        "tags": "Toast Series",
+        "badge": "Choji",
+        "image": "",
+        "description": "",
+        "badge_image": "https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2022/11/13/3623686027.jpg"
+    },
+    {
+        "id": 12,
+        "name": "Spider's Sense Coffe",
+        "category": "Drink",
+        "price": 30000,
+        "tags": "Insomnia Series",
+        "badge": "Spiderman",
+        "image": "",
+        "description": "",
+        "badge_image": "https://encrypted-tbn0.gstatic.com/image?q=tbn:ANd9GcQ5weU53irFalhpwZ4rRCs-1zS-jpkXHNHLlQ&usqp=CAU"
+    },
+    {
+        "id": 13,
+        "name": "Cafe Latte",
+        "category": "Drink",
+        "price": 50000,
+        "tags": "Insomnia Series",
+        "badge": "",
+        "image": "",
+        "description": ""
+    },
+    {
+        "id": 14,
+        "name": "Mattcha Latte",
+        "category": "Drink",
+        "price": 60000,
+        "tags": "Insomnia Series",
+        "badge": "",
+        "image": "",
+        "description": ""
+    },
+    {
+        "id": 15,
+        "name": "Antivenom Ocha",
+        "category": "Drink",
+        "price": 30000,
+        "tags": "Spider-man Series",
+        "badge": "Venom",
+        "image": "",
+        "description": "",
+        "badge_image": "https://s3.amazonaws.com/comicgeeks/characters/avatars/5035.jpg?t=1617995268"
+    },
+    {
+        "id": 16,
+        "name": "Just Ocha",
+        "category": "Drink",
+        "price": 50000,
+        "tags": "Japanese",
+        "badge": "",
+        "image": "",
+        "description": "",
+        "badge_image": "https://static.wikia.nocookie.net/gintama/images/9/95/Justaway.jpg"
+    },
+    {
+        "id": 17,
+        "name": "Sweet Ocha",
+        "category": "Drink",
+        "price": 60000,
+        "tags": "Japanese",
+        "badge": "",
+        "image": "",
+        "description": ""
+    },
+    {
+        "id": 18,
+        "name": "Cocholate Float",
+        "category": "Dessert",
+        "price": 50000,
+        "tags": "Mind Float!",
+        "badge": "",
+        "image": "",
+        "description": ""
+    },
+    {
+        "id": 19,
+        "name": "Coke Float",
+        "category": "Dessert",
+        "price": 40000,
+        "tags": "Mind Float!",
+        "badge": "",
+        "image": "",
+        "description": ""
+    },
+    {
+        "id": 20,
+        "name": "Matcha Float",
+        "category": "Dessert",
+        "price": 30000,
+        "tags": "Mind Float!",
+        "badge": "",
+        "image": "",
+        "description": ""
+    }
+]
