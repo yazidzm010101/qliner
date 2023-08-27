@@ -79,7 +79,7 @@ function Orders({ id, items, status, total }) {
                 </Box>
                 <Button
                     alignSelf={"flex-end"}
-                    bg={"primary.90"}
+                    bg={"primary"}
                     rounded={"xl"}
                     color={"white"}
                     leftIcon={<Icon as={BsFilePdf} />}
