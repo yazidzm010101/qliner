@@ -28,7 +28,7 @@ export default extendTheme({
     colors: {
         "primary.Lighten": "#f57373",
         "primary.Darken": "#d15656",
-        primary: "#ED1B2F",
+        primary: "rgba(245, 101, 101)",
         secondary: "#006CB8",
         tertiary: "#ACC42A",
         ...colorAlpha,

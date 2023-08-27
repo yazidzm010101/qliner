@@ -5,10 +5,12 @@ import "~/App.css";
 import {
     AspectRatio,
     Box,
+    Button,
     Card,
     CardBody,
     CardHeader,
     GridItem,
+    HStack,
     Image,
     SimpleGrid,
     Stack,
@@ -49,7 +51,7 @@ function Catalogue() {
                     <Box
                         px={{ base: 1, sm: 6 }}
                         py={3}
-                        pt={{ base: 3,sm: 100 }}
+                        pt={{ base: 3, sm: 100 }}
                         pos={{ sm: "absolute" }}
                         bottom={{ sm: 0 }}
                         left={{ sm: 0 }}
@@ -60,7 +62,7 @@ function Catalogue() {
                             sm: "linear(10deg, rgba(255,255,255,1) 40%,rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.1) 70%, rgba(255,255,255,0) 100%)",
                         }}
                     >
-                        <VStack spacing={0.5} alignItems={"start"}>
+                        <VStack spacing={0.5} alignItems={"start"} h={"full"}>
                             <Text>{item.name}</Text>
                             <Text color={"primary"}>
                                 {"IDR " +
@@ -69,6 +71,23 @@ function Catalogue() {
                                         ","
                                     )}
                             </Text>
+                            <HStack
+                                marginTop={"auto"}
+                                justifyContent={"flex-end"}
+                                w={"full"}
+                                px={{ base: 2, sm: 0 }}
+                            >
+                                <Button
+                                    bgColor={"primary.10"}
+                                    color={"primary"}
+                                    rounded={"xl"}
+                                    size={"sm"}
+                                    px={6}
+                                    marginLeft={"auto"}
+                                >
+                                    Add
+                                </Button>
+                            </HStack>
                         </VStack>
                     </Box>
                     {item.badge_image && (
