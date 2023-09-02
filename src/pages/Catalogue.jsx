@@ -20,6 +20,8 @@ import {
 import data from "./fake_menu.json";
 import CatalogueDetails from "./CatalogueDetails";
 import { useSearchParams } from "react-router-dom";
+import useCart from "~/hooks/useCart";
+import Cart from "./Cart";
 
 function Catalogue() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -126,6 +128,7 @@ function Catalogue() {
                 ))}
             </SimpleGrid>
             <CatalogueDetails id={searchParams.get('id')} onDismiss={() => setSearchParams({})}/>
+            <Cart/>
         </>
     );
 }

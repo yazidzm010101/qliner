@@ -18,10 +18,14 @@ import { MdOutlineClose } from "react-icons/md";
 import Counter from "~/components/Counter";
 import { useRef } from "react";
 import { useState } from "react";
+import useCart from "~/hooks/useCart";
 
 function CatalogueDetails({ id, onDismiss }) {
-    const price = 1000
+    const price = 1000;
+    const image = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80"
     const [subtotal, setSubtotal] = useState(0);
+    const [count, setCount] = useState(0);
+    const { appendCart } = useCart();
     const ref = useRef();
     useOutsideClick({
         ref: ref,
@@ -50,12 +54,13 @@ function CatalogueDetails({ id, onDismiss }) {
                 top={0}
                 left={0}
                 w={"full"}
-                minH={"100vh"}
+                h={"100vh"}
+                overflowY={"auto"}
                 bg={"white"}
                 zIndex={1000}
             >
                 <AspectRatio ratio={1} w={"full"}>
-                    <Image src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80" />
+                    <Image src={image} />
                 </AspectRatio>
                 <VStack px={8} py={6} alignItems={"flex-start"} spacing={6}>
                     <Text fontSize={"xl"} fontWeight={"bold"} noOfLines={1}>
@@ -72,7 +77,12 @@ function CatalogueDetails({ id, onDismiss }) {
                         repudiandae sit magni voluptate, architecto asperiores
                         harum!
                     </Text>
-                    <Counter onChange={ newValue => setSubtotal(price * newValue) }/>
+                    <Counter
+                        onChange={(newValue) => {
+                            setSubtotal(price * newValue);
+                            setCount(newValue);
+                        }}
+                    />
                     <Text fontSize={"lg"} color={"primary"}>
                         {"IDR " +
                             String(subtotal || price).replace(
@@ -86,6 +96,13 @@ function CatalogueDetails({ id, onDismiss }) {
                         color={"white"}
                         rounded={"xl"}
                         size={"lg"}
+                        onClick={() => appendCart({
+                            name: "lorem ipsum",
+                            price,
+                            amount: subtotal,
+                            image,
+                            count,
+                        })}
                     >
                         Add
                     </Button>
