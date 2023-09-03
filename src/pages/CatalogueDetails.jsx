@@ -99,7 +99,6 @@ function CatalogueDetails({ id, onDismiss }) {
                         onClick={() => appendCart({
                             name: "lorem ipsum",
                             price,
-                            amount: subtotal,
                             image,
                             count,
                         })}

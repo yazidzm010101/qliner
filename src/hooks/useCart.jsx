@@ -6,21 +6,47 @@ function useCart() {
     const cartList = useQuery(["cart", "list"], {
         cacheTime: Infinity,
         staleTime: Infinity,
-        initialData: [],
+        initialData: JSON.parse(localStorage.getItem("cart-list") || "[]"),
         enabled: true,
     });
-    const appendCart = (data) =>
-        queryClient.setQueryData(["cart", "list"], [...cartList.data, data]);
-    const clearCart = () => queryClient.setQueryData(["cart", "list"], []);
-    const removeCartItem = (index) =>
-        queryClient.setQueryData(
-            ["cart", "list"],
-            [
-                ...cartList.data.slice(0, index - 1),
-                ...cartList.data.slice(index, cartList.data.length),
-            ]
-        );
-    return { cartList: cartList.data, appendCart, clearCart, removeCartItem };
+
+    const updateCart = (data, index) => {
+        const newData = [
+            ...cartList.data.slice(0, index),
+            data,
+            ...cartList.data.slice(index + 1, cartList.data.length),
+        ];
+        queryClient.setQueryData(["cart", "list"], newData);
+        localStorage.setItem("cart-list", JSON.stringify(newData));
+    };
+
+    const appendCart = (data) => {
+        const newData = [...cartList.data, data];
+        queryClient.setQueryData(["cart", "list"], newData);
+        localStorage.setItem("cart-list", JSON.stringify(newData));
+    };
+
+    const clearCart = () => {
+        queryClient.setQueryData(["cart", "list"], []);
+        localStorage.setItem("cart-list", null);
+    };
+
+    const removeCartItem = (index) => {
+        const newData = [
+            ...cartList.data.slice(0, index),
+            ...cartList.data.slice(index + 1, cartList.data.length),
+        ];
+        queryClient.setQueryData(["cart", "list"], newData);
+        localStorage.setItem("cart-list", JSON.stringify(newData));
+    };
+
+    return {
+        cartList: cartList.data,
+        appendCart,
+        clearCart,
+        updateCart,
+        removeCartItem,
+    };
 }
 
 export default useCart;

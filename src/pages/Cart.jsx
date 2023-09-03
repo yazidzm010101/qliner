@@ -20,20 +20,33 @@ import { IoMdClose } from "react-icons/io";
 import useCart from "~/hooks/useCart";
 import useLayout from "~/hooks/useLayout";
 import { commify } from "~/utils/text_utils";
+import Counter from "~/components/Counter";
 
 function Cart() {
-    const { cartList, appendCart, removeCartItem, clearCart } = useCart();
     const { setIsFloating } = useLayout();
+    const { cartList, updateCart, appendCart, removeCartItem, clearCart } =
+        useCart();
     const [isFullScreen, setIsFullScreen] = useState(false);
+
     const cartLength = cartList.length;
     const total = cartList.reduce(function (carry, item) {
-        carry += item.amount || 0;
+        carry += (item.count || 0) * (item.price || 0);
         return carry;
     }, 0);
+
     useEffect(() => {
         setIsFloating(cartLength == 0);
     }, [cartLength]);
-    console.log(cartList);
+
+    const updateCount = (count, i) => {
+        if (count <= 0) {
+            removeCartItem(i);
+            return;
+        }
+        const newItem = { ...cartList[i], count };
+        updateCart(newItem, i);
+    };
+
     return (
         <Portal>
             <Box
@@ -45,19 +58,21 @@ function Cart() {
                 w={"full"}
                 h={"full"}
                 pos={"fixed"}
-                zIndex={1000}
+                zIndex={999}
                 unmountOnExit
             />
             <Box
-                zIndex={1000}
+                zIndex={(isFullScreen && 1000) || 999}
                 pos={"fixed"}
                 as={Fade}
-                in={cartLength > 0}
+                in={cartList.length > 0 || isFullScreen}
                 bottom={(!isFullScreen && 16) || 0}
                 left={"50%"}
                 transform={"translateX(-50%)"}
                 w="full"
-                transition={"all .2s ease-in-out"}
+                transition={
+                    ".05s bottom ease-in-out, .25s height ease-in-out, .1s width linear"
+                }
                 h={(isFullScreen && "100vh") || 24}
                 maxW={(isFullScreen && "container.sm") || "400px"}
                 p={!isFullScreen && 4}
@@ -139,7 +154,7 @@ function Cart() {
                             </Button>
                         </HStack>
                         <VStack px={6} w={"full"}>
-                            {cartList.map((item) => (
+                            {cartList.map((item, i) => (
                                 <Stack
                                     w={"full"}
                                     _hover={{ cursor: "pointer" }}
@@ -150,9 +165,6 @@ function Cart() {
                                     pb={{ sm: 14 }}
                                     pos={"relative"}
                                     direction={{ base: "row", sm: "column" }}
-                                    onClick={() =>
-                                        setSearchParams({ id: item.id })
-                                    }
                                 >
                                     <AspectRatio
                                         ratio={1}
@@ -203,16 +215,13 @@ function Cart() {
                                                 w={"full"}
                                                 px={{ base: 2, sm: 0 }}
                                             >
-                                                <Button
-                                                    bgColor={"primary.10"}
-                                                    color={"primary"}
-                                                    rounded={"xl"}
-                                                    size={"sm"}
-                                                    px={6}
-                                                    marginLeft={"auto"}
-                                                >
-                                                    Add
-                                                </Button>
+                                                <Counter
+                                                    initialValue={item.count}
+                                                    size="sm"
+                                                    onChange={(newValue) =>
+                                                        updateCount(newValue, i)
+                                                    }
+                                                />
                                             </HStack>
                                         </VStack>
                                     </Box>
@@ -243,6 +252,19 @@ function Cart() {
                                 </Stack>
                             ))}
                         </VStack>
+                        {cartLength == 0 && (
+                            <VStack w={"full"} py={12} px={6} justifyContent={"center"}>
+                                <AspectRatio ratio={1} maxW={'100px'} w={"full"}>
+                                    <Icon
+                                        as={PiBasketDuotone}
+                                        w={"full"}
+                                        h={"full"}
+                                        color={"primary"}
+                                    />
+                                </AspectRatio>
+                                <Text textAlign={"center"}>Empty list on your bag, you can order first from the menu page</Text>
+                            </VStack>
+                        )}
                     </Box>
                 </Box>
             </Box>

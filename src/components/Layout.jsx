@@ -29,21 +29,6 @@ function Layout() {
     return (
         <>
             <HStack
-                // rounded={isFloating && "xl"}
-                // border={"1px solid rgba(0,0,0,0.03)"}
-                // h={16}
-                // spacing={8}
-                // pos={"fixed"}
-                // w={!isFloating && "full"}
-                // maxW={"container.sm"}
-                // bottom={(isFloating && 4) || 0}
-                // left={"50%"}
-                // transform={"translateX(-50%)"}
-                // justifyContent={"center"}
-                // px={4}
-                // py={2}
-                // bg={"white"}
-                // zIndex={999}
                 rounded={"xl"}
                 border={"1px solid rgba(0,0,0,0.03)"}
                 h={16}
@@ -57,7 +42,7 @@ function Layout() {
                 px={4}
                 py={2}
                 bg={"white"}
-                zIndex={999}
+                zIndex={1000}
                 style={{ boxShadow: "0 0.5rem 1.5rem rgba(0,0,0,0.3)" }}
             >
                 {data.map((item, key) => (
