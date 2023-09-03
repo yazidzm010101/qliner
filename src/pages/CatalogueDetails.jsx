@@ -12,7 +12,9 @@ import {
     ScaleFade,
     Text,
     VStack,
+    background,
     useOutsideClick,
+    useToast,
 } from "@chakra-ui/react";
 import { MdOutlineClose } from "react-icons/md";
 import Counter from "~/components/Counter";
@@ -21,8 +23,10 @@ import { useState } from "react";
 import useCart from "~/hooks/useCart";
 
 function CatalogueDetails({ id, onDismiss }) {
+    const toast = useToast();
     const price = 1000;
-    const image = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80"
+    const image =
+        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80";
     const [subtotal, setSubtotal] = useState(0);
     const [count, setCount] = useState(0);
     const { appendCart } = useCart();
@@ -96,12 +100,22 @@ function CatalogueDetails({ id, onDismiss }) {
                         color={"white"}
                         rounded={"xl"}
                         size={"lg"}
-                        onClick={() => appendCart({
-                            name: "lorem ipsum",
-                            price,
-                            image,
-                            count,
-                        })}
+                        onClick={() => {
+                            appendCart({
+                                name: "lorem ipsum",
+                                price,
+                                image,
+                                count,
+                            });
+                            toast({
+                                title: `${count} item added!`,
+                                description:
+                                    "You can always check your bag to see the order before submitting it.",
+                                duration: 10000,
+                                isClosable: true,
+                                position: "top",
+                            });
+                        }}
                     >
                         Add
                     </Button>

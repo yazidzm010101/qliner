@@ -158,7 +158,7 @@ function Cart() {
                                 <Stack
                                     w={"full"}
                                     _hover={{ cursor: "pointer" }}
-                                    key={item.id}
+                                    key={i}
                                     shadow={"none"}
                                     rounded={"2xl"}
                                     border={"1px solid rgba(0,0,0,0.1)"}
@@ -251,10 +251,22 @@ function Cart() {
                                     )}
                                 </Stack>
                             ))}
+                            <Box pos={"absolute"} bottom={0} left={0} w={"full"}>
+                                <Button bg="primary" color={"white"}>Add to order</Button>
+                            </Box>
                         </VStack>
                         {cartLength == 0 && (
-                            <VStack w={"full"} py={12} px={6} justifyContent={"center"}>
-                                <AspectRatio ratio={1} maxW={'100px'} w={"full"}>
+                            <VStack
+                                w={"full"}
+                                py={12}
+                                px={6}
+                                justifyContent={"center"}
+                            >
+                                <AspectRatio
+                                    ratio={1}
+                                    maxW={"100px"}
+                                    w={"full"}
+                                >
                                     <Icon
                                         as={PiBasketDuotone}
                                         w={"full"}
@@ -262,7 +274,10 @@ function Cart() {
                                         color={"primary"}
                                     />
                                 </AspectRatio>
-                                <Text textAlign={"center"}>Empty list on your bag, you can order first from the menu page</Text>
+                                <Text textAlign={"center"}>
+                                    Empty list on your bag, you can order first
+                                    from the menu page
+                                </Text>
                             </VStack>
                         )}
                     </Box>
